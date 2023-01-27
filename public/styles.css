@@ -1,0 +1,99 @@
+body{
+    background-color: lightseagreen;
+    font-family: 'Karla', sans-serif;
+}
+
+.app{
+    margin: 100px auto;
+    background-color: aliceblue;
+    padding-bottom: 30px;
+}
+
+.app,
+.start-container{
+    border-radius: 5px;
+}
+
+.start-container{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.label{
+    background-color: green;
+}
+
+select{
+    margin: 20px;
+    width: 200px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.answer-box{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    margin: 10px 20px;
+}
+
+.question{
+    font-size: 1rem;
+    text-align: center;
+    padding: 0 20px
+}
+
+.answer{
+    font-size: 0.85rem;
+    width: 200px;
+    padding: 5px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+.checkAnswers{
+    display: flex;
+    margin: 30px auto;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: none;
+    background-color: pink;
+    font-size: 1.25rem;
+}
+
+@media (min-width: 600px) {
+    .app{
+        width: 600px;
+    }
+    .answer-box{
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 900px) {
+    .app{
+        width: 900px;
+    }
+    .answer-box{
+        flex-wrap: nowrap;
+
+    }
+}
+

@@ -1,0 +1,288 @@
+  function createAnswerArray(){
+    getQuiz.map(item => {  
+      let allAnswers = []
+        allAnswers.push(item.correct_answer)
+         item.incorrect_answers.map(item => {
+            allAnswers.push(item)
+            allAnswers.sort(() => Math.random() - 0.5)
+            return allAnswers
+         })
+
+        allAnswers.forEach(item => {
+          answerObjects.push({answer: item, id: nanoid(), isHeld:false})
+          return answerObjects
+        })
+
+    })
+  }
+
+  import React from "react";
+import { nanoid } from 'nanoid'
+import Main from './Components/Main.js'
+
+export default function App() {
+
+  const [getQuiz, setGetQuiz] = React.useState([])
+  
+  const [newQuiz, setNewQuiz] = React.useState([])
+  console.log(newQuiz)
+
+  
+
+  React.useEffect(() => {
+    fetch('https://opentdb.com/api.php?amount=5&category=27&difficulty=easy&type=multiple')
+    .then(res => res.json())
+    .then(data => {
+      let questionArray = []
+      data.results.map(item => {    
+        
+        let allAnswers = []
+          allAnswers.push(item.correct_answer)
+           item.incorrect_answers.map(item => {
+              allAnswers.push(item)
+              allAnswers.sort(() => Math.random() - 0.5)
+              return allAnswers
+           })
+
+        let answerObjects = []
+          allAnswers.forEach(item => {
+            answerObjects.push({answer: item, id: nanoid(), isHeld:false})
+            return answerObjects
+          })
+
+        let quizObj = {
+          question: item.question,
+          correctAnswer: item.correct_answer,
+          incorrectAnswers: item.incorrect_answers,
+          answers: answerObjects,
+          id: nanoid()
+        }
+        questionArray.push(quizObj)
+        
+      })
+      setNewQuiz(questionArray)
+      //setGetQuiz(data.results)
+    })
+  }, [])
+
+  function newGame(){
+      /*getQuiz.map(item => {
+          
+        let allAnswers = []
+          allAnswers.push(item.correct_answer)
+           item.incorrect_answers.map(item => {
+              allAnswers.push(item)
+              allAnswers.sort(() => Math.random() - 0.5)
+              return allAnswers
+           })
+
+        let answerObjects = []
+          allAnswers.forEach(item => {
+            answerObjects.push({answer: item, id: nanoid(), isHeld:false})
+            return answerObjects
+          })
+
+        let quizObj = {
+          question: item.question,
+          correctAnswer: item.correct_answer,
+          incorrectAnswers: item.incorrect_answers,
+          answers: answerObjects,
+          id: nanoid()
+        }
+        questionArray.push(quizObj)
+        setNewQuiz(questionArray)
+      })*/
+  }
+
+  function holdAnswer(id){
+    console.log(id)
+    /*setNewQuiz(oldQuiz => oldQuiz.map(item => {
+        return {...item, item.answers.map(answer => {
+          return answer.id === id ?
+          {...answer, isHeld: !answer.isHeld}:
+          answer
+        })}
+    }))*/
+  }
+
+  const getQuestionData = newQuiz.map(item => (    
+    <Main 
+      key = {item.id}
+      ques = {item.question}
+      answers = {item.answers}
+      holdAnswer = {holdAnswer}
+    />
+  ))
+
+  return (
+    <div className="App">
+      {getQuestionData}
+      <button onClick={newGame}>Click Here</button>
+    </div>
+  );
+}
+
+working
+import React from "react";
+import { nanoid } from 'nanoid'
+import Main from './Components/Main.js'
+
+export default function App() {
+
+  const [getQuiz, setGetQuiz] = React.useState([])
+  
+  const [newQuiz, setNewQuiz] = React.useState([])
+  console.log(newQuiz)
+  let questionArray = []
+  
+
+  React.useEffect(() => {
+    fetch('https://opentdb.com/api.php?amount=5&category=27&difficulty=easy&type=multiple')
+    .then(res => res.json())
+    .then(data => setGetQuiz(data.results))
+  }, [])
+
+  function newGame(){
+      getQuiz.map(item => {
+          
+        let allAnswers = []
+          allAnswers.push(item.correct_answer)
+           item.incorrect_answers.map(item => {
+              allAnswers.push(item)
+              allAnswers.sort(() => Math.random() - 0.5)
+              return allAnswers
+           })
+
+        let answerObjects = []
+          allAnswers.forEach(item => {
+            answerObjects.push({answer: item, id: nanoid(), isHeld:false})
+            return answerObjects
+          })
+
+        let quizObj = {
+          question: item.question,
+          correctAnswer: item.correct_answer,
+          incorrectAnswers: item.incorrect_answers,
+          answers: answerObjects,
+          id: nanoid()
+        }
+        questionArray.push(quizObj)
+        setNewQuiz(questionArray)
+      })
+  }
+
+  function holdAnswer(id){
+    console.log(id)
+    /*setNewQuiz(oldQuiz => oldQuiz.map(item => {
+        return {...item, item.answers.map(answer => {
+          return answer.id === id ?
+          {...answer, isHeld: !answer.isHeld}:
+          answer
+        })}
+    }))*/
+  }
+
+  const getQuestionData = newQuiz.map(item => (    
+    <Main 
+      key = {item.id}
+      ques = {item.question}
+      answers = {item.answers}
+      holdAnswer = {holdAnswer}
+    />
+  ))
+
+  return (
+    <div className="App">
+      {getQuestionData}
+      <button onClick={newGame}>Click Here</button>
+    </div>
+  );
+}
+
+broken
+import React from "react";
+import { nanoid } from 'nanoid'
+import Main from './Components/Main.js'
+
+export default function App() {
+
+  const [getAnswers, setGetAnswers] = React.useState([])
+  const [getQuiz, setGetQuiz] = React.useState([])
+  const [newQuiz, setNewQuiz] = React.useState([])
+
+  let questionArray = []
+
+  React.useEffect(() => {
+    fetch('https://opentdb.com/api.php?amount=5&category=27&difficulty=easy&type=multiple')
+    .then(res => res.json())
+    .then(data => {
+      let answerObjects = []
+      let allAnswers = []
+      data.results.map(item => {    
+        
+          allAnswers.push(item.correct_answer)
+           item.incorrect_answers.map(item => {
+              allAnswers.push(item)
+              allAnswers.sort(() => Math.random() - 0.5)
+              return allAnswers
+           })
+      })
+      
+      allAnswers.map(item => {
+        //answerObjects.push({answer: item, id: nanoid(), isHeld:false})
+         //return answerObjects
+         let tester = {answer: item, id: nanoid(), isHeld:false}
+         answerObjects.push(tester)
+         setGetAnswers(answerObjects)
+       })
+      
+      setGetQuiz(data.results)
+    })
+  }, [])
+
+  function newGame(){
+      getQuiz.map(item => {
+
+        let quizObj = {
+          question: item.question,
+          correctAnswer: item.correct_answer,
+          incorrectAnswers: item.incorrect_answers,
+          answers: getAnswers,
+          id: nanoid()
+        }
+        questionArray.push(quizObj)
+        setNewQuiz(questionArray)
+      })
+  }
+
+  function holdAnswer(id){
+    console.log(id)
+    /*setNewQuiz(oldQuiz => oldQuiz.map(item => {
+        return {...item, item.answers.map(answer => {
+          return answer.id === id ?
+          {...answer, isHeld: !answer.isHeld}:
+          answer
+        })}
+    }))*/
+  }
+
+  const getQuestionData = newQuiz.map(item => (    
+    <Main 
+      key = {item.id}
+      ques = {item.question}
+      answers = {item.answers}
+      holdAnswer = {holdAnswer}
+    />
+  ))
+
+  return (
+    <div className="App">
+      {getQuestionData}
+      <button onClick={newGame}>Click Here</button>
+    </div>
+  );
+}
+
+
+General Knowledge 9
+
