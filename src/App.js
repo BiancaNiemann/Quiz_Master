@@ -12,6 +12,7 @@ export default function App() {
   const [showAnswers, setshowAnswers] = React.useState(false)
   const [totalCorrect, setTotalCorrect] = React.useState(0)
   const [getCategories, setGetCategories] = React.useState({})
+  const [checkGame, setCheckGame] = React.useState(false)
 
   //CREATE ADDRESS FROM SELECTION MADE ON START PAGE, GETS INFO FROM GETCATEGORIES STATE OBJECT 
   let address = `https://opentdb.com/api.php?amount=5&category=${getCategories.categoryChoice}&difficulty=${getCategories.levelChoice}&type=multiple`
@@ -88,6 +89,7 @@ export default function App() {
       id = {item.id}
       isChecked = {showAnswers}
       correct = {item.correctAnswer}
+      checker = {checkGame}
     />
   ))
 
@@ -96,7 +98,7 @@ export default function App() {
     let total = 0
     let answer = ''
     let corrAns = ''
-
+    setCheckGame(true)
     newQuiz.map(item => {  
       
       corrAns = item.correctAnswer
@@ -121,6 +123,7 @@ export default function App() {
     setPlayGame(false)
     setshowAnswers(false)
     setNewQuiz([])
+    setCheckGame(false)
   }
 
   return (

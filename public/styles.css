@@ -12,16 +12,18 @@ body{
 .app,
 .start-container{
     border-radius: 5px;
-    background-image: url('../images/intro-page.png');
 }
 
 .start-container{
     height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    margin: 0px auto;
     padding-top: 50px;
+}
+
+.start-container,
+.question,
+.total{
+    text-align: center;
 }
 
 h1{
@@ -45,67 +47,79 @@ h3{
     width: 300px;
     background-color: lightgray;
     padding: 10px;
-    border: none;
     border-radius: 2px;
     font-family: inherit;
+}
+
+.answer,
+.custom-select select{
     color: inherit;
 }
 
 .container{
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
 
 .answer-box{
-    display: flex;
     flex-direction: column;
-    cursor: pointer;
+    margin: 10px 20px 20px;
+    padding: 15px;
+    border-bottom: 1px solid lightgrey
+}
+
+.answer-box,
+.answer,
+.check-btn, 
+.playAgain-btn{
+    display: flex;
     align-items: center;
-    border-bottom: 1px solid grey;
-    margin: 10px 20px;
+    justify-content: center;
 }
 
 .question{
-    font-size: 1rem;
-    text-align: center;
+    font-size: 1.15rem;
     padding: 0 20px
 }
 
 .answer{
-    display: flex;
     font-size: 0.85rem;
     width: 200px;
     height: 50px;
     padding: 5px;
     border-radius: 6px;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
-button{
+button,
+.answer-box{
     cursor: pointer;
 }
-.start-btn, .check-btn, .playAgain-btn{
+
+.start-btn, 
+.check-btn, 
+.playAgain-btn{
     width: 193px;
     height: 52px;
     background: #4D5B9E;
     border-radius: 15px;
-    border: none;
     color: white;    
     font-weight: 500;
     font-size: 1rem;
 }
 
+.start-btn, 
+.check-btn, 
+.playAgain-btn,
+.answer,
+.custom-select select{
+    border: none;
+}
+
 .check-btn, .playAgain-btn{
-    display: flex;
     margin: 30px auto;
-    justify-content: center;
-    align-items: center;
 }
 
 .total{
-    text-align: center;
     margin-top: 20px;
 }
 
