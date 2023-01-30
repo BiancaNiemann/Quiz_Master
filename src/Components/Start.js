@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Start(props) {
     //SET STATES
-    const [categories, setCategories] = React.useState([])
+    const [categories, setCategories] = React.useState({category: '--Choose category--', difficulty: '--Choose level--'})
     const [createList, setCreateList] = React.useState([])
+    const [optionsSelect, setOptionSelect] = React.useState()
 
     //FETCHES ALL CATEGORIES FROM OPENTDB AND SETS TO STATE
     React.useEffect(() => {
@@ -24,8 +25,13 @@ export default function Start(props) {
                 [name]: value
             }
         })
+        if (categories.category === '--Choose category--' && categories.difficulty === '--Choose level--' ){
+            setOptionSelect(false)
+        } else {
+            setOptionSelect(true)
+        }
     }
-  
+
     //USES STATE FROM FETCH TO CREATE THE OPTION ELEMENTS BELOW
     const categoryList = createList.map(category => {
             return (
@@ -42,33 +48,39 @@ export default function Start(props) {
             <form>
                 <label htmlFor="category" className="label">Select your category</label>
                 <br/>
-                <select
-                    id="category"
-                    value= {categories.categoryName}
-                    onChange={handleChange}
-                    name="category"
-                >
-                    <option value="">All categories</option> 
-                    {categoryList}
-                </select>
+                <div className="custom-select">
+                    <select
+                        id="category"
+                        value= {categories.categoryName}
+                        onChange={handleChange}
+                        name="category"
+                        required
+                    >
+                        <option >--Choose category--</option> 
+                        <option value="">All categories</option> 
+                        {categoryList}
+                    </select>
+                </div>
                 <br />
                 <label htmlFor="difficulty" className="label">Select your difficulty level</label>
                 <br/>
-                <select
-                    id="difficulty"
-                    value= {categories.difficulty}
-                    onChange={handleChange}
-                    name="difficulty"
-                >
-                    <option value="">All levels</option> 
-                    <option value="easy">Easy</option> 
-                    <option value="medium">Medium</option> 
-                    <option value="hard">Hard</option>     
-                </select>
-                
+                <div className="custom-select">
+                    <select
+                        id="difficulty"
+                        value= {categories.difficulty}
+                        onChange={handleChange}
+                        name="difficulty"
+                    >
+                        <option >--Choose level--</option> 
+                        <option value="">All levels</option> 
+                        <option value="easy">Easy</option> 
+                        <option value="medium">Medium</option> 
+                        <option value="hard">Hard</option>     
+                    </select>
+                </div>
             </form>
             <br/>   
-            <button onClick={() => props.fetchCategories(categories)}>Click Here to confirm your selection</button>
+            {optionsSelect && <button onClick={() => props.fetchCategories(categories)} className="start-btn">Start Quiz</button>}
 
         </div>
     )

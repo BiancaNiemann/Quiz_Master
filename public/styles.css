@@ -1,17 +1,18 @@
 body{
     background-color: lightseagreen;
     font-family: 'Karla', sans-serif;
+    color: #293264;
 }
 
 .app{
     margin: 100px auto;
-    background-color: aliceblue;
     padding-bottom: 30px;
 }
 
 .app,
 .start-container{
     border-radius: 5px;
+    background-image: url('../images/intro-page.png');
 }
 
 .start-container{
@@ -23,13 +24,31 @@ body{
     padding-top: 50px;
 }
 
-.label{
-    background-color: green;
+h1{
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
 }
 
-select{
+h3{
+    font-weight: 400;
+    margin-top: 0;
+    font-size: 1.25rem;
+}
+
+.label{
+    color: rgb(85, 85, 85);
+}
+
+.custom-select select{
     margin: 20px;
-    width: 200px;
+    width: 300px;
+    background-color: lightgray;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    font-family: inherit;
+    color: inherit;
 }
 
 .container{
@@ -54,25 +73,40 @@ select{
 }
 
 .answer{
+    display: flex;
     font-size: 0.85rem;
     width: 200px;
+    height: 50px;
     padding: 5px;
     border-radius: 6px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 button{
     cursor: pointer;
 }
+.start-btn, .check-btn, .playAgain-btn{
+    width: 193px;
+    height: 52px;
+    background: #4D5B9E;
+    border-radius: 15px;
+    border: none;
+    color: white;    
+    font-weight: 500;
+    font-size: 1rem;
+}
 
-.checkAnswers{
+.check-btn, .playAgain-btn{
     display: flex;
     margin: 30px auto;
-    padding: 10px 15px;
-    border-radius: 3px;
-    border: none;
-    background-color: pink;
-    font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.total{
+    text-align: center;
+    margin-top: 20px;
 }
 
 @media (min-width: 600px) {

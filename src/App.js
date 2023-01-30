@@ -7,17 +7,16 @@ import Start from './Components/Start.js'
 export default function App() {
 
   //SET STATES
-  //const [getQuiz, setGetQuiz] = React.useState([])
   const [newQuiz, setNewQuiz] = React.useState([])
   const [playGame, setPlayGame] = React.useState(false)
   const [showAnswers, setshowAnswers] = React.useState(false)
   const [totalCorrect, setTotalCorrect] = React.useState(0)
-  const [getCategories, setGetCategories] = React.useState({categoryChoice: "", levelChoice: ""})
+  const [getCategories, setGetCategories] = React.useState({})
 
   //CREATE ADDRESS FROM SELECTION MADE ON START PAGE, GETS INFO FROM GETCATEGORIES STATE OBJECT 
   let address = `https://opentdb.com/api.php?amount=5&category=${getCategories.categoryChoice}&difficulty=${getCategories.levelChoice}&type=multiple`
 
-  //USE-EFFCT FETCHES THE API DATA USING ABOVE ADDRESS CREATED
+  //USE-EFFECT FETCHES THE API DATA USING ABOVE ADDRESS CREATED
   React.useEffect(() => {
     fetch(address)
     .then(res => res.json())
@@ -52,7 +51,7 @@ export default function App() {
         setNewQuiz(oldQuiz => [...oldQuiz, quizObj])
       })
     })
-  }, [playGame])
+  }, [getCategories])
 
   //FETCHES THE CATEGORIES FROM SELECTION MADE ON START PAGE AND THEN SAVE DETAILS IN STATE OBJECT
   function fetchCategories(cats){
@@ -128,9 +127,9 @@ export default function App() {
     <div className="app">
       {playGame && getQuestionData}
       {!playGame && <Start fetchCategories={fetchCategories}/>}
-      {playGame && !showAnswers && <button onClick={checkAnswer} className="checkAnswers">Check Answers</button>}
-      {showAnswers && <h3>total is {totalCorrect} / 5</h3>}
-      {showAnswers && <button onClick={playAgain}>Play Again</button>}
+      {playGame && !showAnswers && <button onClick={checkAnswer} className="check-btn">Check Answers</button>}
+      {showAnswers && <h3 className="total">total is {totalCorrect} / 5</h3>}
+      {showAnswers && <button onClick={playAgain} className="playAgain-btn">Play Again</button>}
     </div>
   );
 }
