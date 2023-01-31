@@ -44,7 +44,7 @@ export default function Start(props) {
         <div className="start-container">
             <h1>Quiz-Master</h1>
             <h3>Test you knowledge</h3>
-            <h3>Make your selection to started!</h3>
+            <h3>Make your selection to get started!</h3>
             <form>
                 <label htmlFor="category" className="label">Select your category</label>
                 <br/>
