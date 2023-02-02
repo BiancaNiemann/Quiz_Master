@@ -2,6 +2,7 @@ import React from "react";
 import { nanoid } from 'nanoid'
 import Main from './Components/Main.js'
 import Start from './Components/Start.js'
+import Confetti from 'react-confetti'
 
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
   const [totalCorrect, setTotalCorrect] = React.useState(0)
   const [getCategories, setGetCategories] = React.useState({})
   const [checkGame, setCheckGame] = React.useState(false)
+  const [fullMarks, setFullMarks] = React.useState(false)
 
   //CREATE ADDRESS FROM SELECTION MADE ON START PAGE, GETS INFO FROM GETCATEGORIES STATE OBJECT 
   let address = `https://opentdb.com/api.php?amount=5&category=${getCategories.categoryChoice}&difficulty=${getCategories.levelChoice}&type=multiple`
@@ -113,8 +115,12 @@ export default function App() {
       }
       setshowAnswers(true)
       return setTotalCorrect(total)
-      
     })
+
+    if (total === 5){
+        return setFullMarks(true)
+    }
+
   }
 
   //RESETS ALL VALUES BACK TO ORIGINAL STATE
@@ -124,6 +130,7 @@ export default function App() {
     setshowAnswers(false)
     setNewQuiz([])
     setCheckGame(false)
+    setFullMarks(false)
   }
 
   return (
@@ -133,6 +140,7 @@ export default function App() {
       {playGame && !showAnswers && <button onClick={checkAnswer} className="check-btn">Check Answers</button>}
       {showAnswers && <h3 className="total">total is {totalCorrect} / 5</h3>}
       {showAnswers && <button onClick={playAgain} className="playAgain-btn">Play Again</button>}
+      {fullMarks && <Confetti />}
     </div>
   );
 }

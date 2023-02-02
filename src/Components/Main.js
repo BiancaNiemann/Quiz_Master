@@ -5,16 +5,16 @@ export default function Main(props){
     const propAnswer = props.answers.map(item => {
         if (props.isChecked === true){
             if (item.answer === props.correct) {
-                const styles = { backgroundColor: item.answer ? "#f5dd90" : "lightgray"}
+                const styles = { backgroundColor: item.answer ? "#f5dd90" : "rgb(186, 247, 244)"}
                 return <button className="answer" key={item.id} onClick={() => props.holdAnswer(item.id, props.id)} style={styles} dangerouslySetInnerHTML={{__html: item.answer}} disabled></button>
             }
         } 
         
         if(!props.checker){
-            const styles = { backgroundColor: item.isHeld ? "#586ba4" : "lightgray"}
+            const styles = { backgroundColor: item.isHeld ? "#586ba4" : "rgb(186, 247, 244)"}
             return <button className="answer" key={item.id} onClick={() => props.holdAnswer(item.id, props.id)} style={styles} dangerouslySetInnerHTML={{__html: item.answer}}></button>
         } else if (props.checker){
-            const styles = { backgroundColor: item.isHeld ? "lightpink" : "lightgray"}
+            const styles = { backgroundColor: item.isHeld ? "lightpink" : "rgb(186, 247, 244)"}
             return <button className="answer" key={item.id} onClick={() => props.holdAnswer(item.id, props.id)} style={styles} dangerouslySetInnerHTML={{__html: item.answer}} disabled></button>}
     })
     return (

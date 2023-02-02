@@ -7,17 +7,20 @@ body{
 .app{
     margin: 100px auto;
     padding-bottom: 30px;
+    border: 10px rgb(6, 133, 126) solid;
 }
 
 .app,
 .start-container{
     border-radius: 5px;
+    background-color: aliceblue;
 }
 
 .start-container{
     height: 500px;
     margin: 0px auto;
     padding-top: 50px;
+    
 }
 
 .start-container,
@@ -39,20 +42,16 @@ h3{
 }
 
 .label{
-    color: rgb(85, 85, 85);
+    color: rgb(6, 133, 126);
 }
 
 .custom-select select{
     margin: 20px;
     width: 300px;
-    background-color: lightgray;
+    background-color: rgb(223, 221, 221);
     padding: 10px;
     border-radius: 2px;
     font-family: inherit;
-}
-
-.answer,
-.custom-select select{
     color: inherit;
 }
 
@@ -83,6 +82,7 @@ h3{
 
 .answer{
     font-size: 0.85rem;
+    font-weight: bold;
     width: 200px;
     height: 50px;
     padding: 5px;
@@ -93,6 +93,10 @@ h3{
 button,
 .answer-box{
     cursor: pointer;
+}
+
+button{
+    color: inherit;
 }
 
 .start-btn, 
@@ -141,7 +145,6 @@ button,
     }
     .answer-box{
         flex-wrap: nowrap;
-
     }
 }
 
