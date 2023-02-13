@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Scrimba Quizzical Solo Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The final solo project of the Scrimba Frontend Career path, for this we had to practice everything we have learnt over the whole course which includes:
+- Html
+- CSS
+- JavaScript
+- React
+- Api's
 
-## Available Scripts
+## Project features
 
-In the project directory, you can run:
+- The Quiz starts with a Home page asking user to select category type and difficulty level they would like
+- Then on start button click it opens the next page which is the quiz, showing 5 questions each with 4 answers to select from, the chosen answer is highlighted
+- Once check answers is clicked takes you to the next page which shows the same questions and your highlighted answers plus the correct answers are also highlighted, at the bottom of the screen is the score
 
-### `npm start`
+##  What I used to create the App
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Components for the start and Main pages which include the html to render to the screen
+- Fetch the data from the API and used React.useEffect hook to put the data received in state to be used in functions
+- Conditional rendering is used so functions know what needs to display on the screen
+- imported nanoid so that each question has its on unique id
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Stretch goals added
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The option to select a category and difficulty level was not part of the original project but I wanted to try and stretch myself a bit and see if these could be added
+- The design is not exactly per the Figma file as I wanted to personalise it a bit
+- The confetti that falls if the user gets all questions correct
